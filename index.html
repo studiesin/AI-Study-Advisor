@@ -222,7 +222,7 @@
                             <div class="mt-3 text-center font-bold text-gray-800 flex items-center justify-center space-x-2">
                                 <span class="text-2xl">&#10145;</span> <span class="text-vibrant-teal text-lg">DIRECT ENTRY</span>
                             </div>
-                            <p class="text-sm text-center text-gray-600 mt-2">Basic credential plus internal university assessments.</p>
+                            <p class="text-sm text-center text-gray-650 mt-2">Basic credential plus internal university assessments.</p>
                         </div>
                     </div>
                 </div>
@@ -242,7 +242,7 @@
                             <div class="mt-3 text-center font-bold text-gray-800 flex items-center justify-center space-x-2">
                                 <span class="text-2xl">&#10145;</span> <span class="text-vibrant-teal text-lg">DIRECT ENTRY</span>
                             </div>
-                            <p class="text-sm text-center text-gray-600 mt-2">Internal tests only. Basic UNEDasiss diploma verification needed.</p>
+                            <p class="text-sm text-center text-gray-650 mt-2">Internal tests only. Basic UNEDasiss diploma verification needed.</p>
                         </div>
                     </div>
                 </div>
@@ -394,7 +394,7 @@
                                     <button type="button" onclick="setUniType('public')" id="btn-uni-public" class="py-2.5 text-xs md:text-sm font-bold rounded-lg transition-all shadow-sm bg-white text-slate-900">
                                         Public Univ.
                                     </button>
-                                    <button type="button" onclick="setUniType('private')" id="btn-uni-private" class="py-2.5 text-xs md:text-sm font-bold rounded-lg transition-all text-slate-600 hover:text-slate-900">
+                                    <button type="button" onclick="setUniType('private')" id="btn-uni-private" class="py-2.5 text-xs md:text-sm font-bold rounded-lg transition-all text-slate-650 hover:text-slate-900">
                                         Private Univ.
                                     </button>
                                 </div>
@@ -421,13 +421,13 @@
                             </div>
                             <div class="grid grid-cols-1 md:grid-cols-2 gap-4 items-center">
                                 <div>
-                                    <label id="input-grade-label" class="block text-xs font-bold text-slate-650 mb-1">Total IB Points (24 - 45)</label>
+                                    <label id="input-grade-label" class="block text-xs font-bold text-slate-655 mb-1">Total IB Points (24 - 45)</label>
                                     <div class="relative rounded-lg shadow-sm">
                                         <input type="text" id="input-grade-value" value="34" oninput="updateWizardState()" class="block w-full rounded-xl border border-slate-355 pl-4 pr-12 py-2 text-slate-900 font-extrabold focus:ring-2 focus:ring-vibrant-blue focus:border-transparent">
                                         <div class="absolute inset-y-0 right-0 pr-3 flex items-center pointer-events-none text-slate-400 font-bold text-xs" id="grade-unit">PTS</div>
                                     </div>
                                 </div>
-                                <div class="bg-white p-4 rounded-xl border border-blue-100 flex justify-between items-center shadow-sm relative">
+                                <div class="bg-white p-4 rounded-xl border border-blue-100 flex justify-between items-center shadow-sm relative font-semibold">
                                     <div>
                                         <span class="block text-[10px] text-slate-400 font-black uppercase tracking-wider">Spanish Converted Mark</span>
                                         <div class="flex items-baseline">
@@ -475,7 +475,7 @@
                             <h4 class="text-md font-bold text-slate-900 flex items-center gap-1.5">
                                 <i data-lucide="check-square" class="text-vibrant-teal w-4 h-4"></i> Personal Action Guide
                             </h4>
-                            <span class="text-[10px] bg-slate-100 text-slate-600 px-2 py-0.5 rounded font-bold">Dynamic Roadmap</span>
+                            <span class="text-[10px] bg-slate-100 text-slate-650 px-2 py-0.5 rounded font-bold">Dynamic Roadmap</span>
                         </div>
                         <div class="space-y-4 relative before:absolute before:left-3.5 before:top-2 before:bottom-2 before:w-0.5 before:bg-slate-100" id="checklist-container">
                             <!-- Steps Injected Here -->
@@ -730,26 +730,6 @@
             }
         }
 
-        function saveLocalApiKey() {
-            const key = document.getElementById('local-api-key').value.trim();
-            localStorage.setItem('accessspain_gemini_api_key', key);
-        }
-
-        function setUniType(type) {
-            state.uniType = type;
-            const publicBtn = document.getElementById('btn-uni-public');
-            const privateBtn = document.getElementById('btn-uni-private');
-
-            if (type === 'public') {
-                publicBtn.className = 'py-2.5 text-xs md:text-sm font-bold rounded-lg transition-all shadow-sm bg-white text-slate-900';
-                privateBtn.className = 'py-2.5 text-xs md:text-sm font-bold rounded-lg transition-all text-slate-650 hover:text-slate-900';
-            } else {
-                privateBtn.className = 'py-2.5 text-xs md:text-sm font-bold rounded-lg transition-all shadow-sm bg-white text-slate-900';
-                publicBtn.className = 'py-2.5 text-xs md:text-sm font-bold rounded-lg transition-all text-slate-655 hover:text-slate-900';
-            }
-            updateWizardState();
-        }
-
         // Conversions Engine - Based on actual UNEDassis mapping tables
         function calculateBaseSpGrade(system, value, passPercent = 60) {
             let score = parseFloat(value);
@@ -936,7 +916,7 @@
             if (isPrivate) {
                 difficultyPercent = 30;
                 diffText = "Simple Entry";
-                mainBadge = `<div class="bg-emerald-50 text-emerald-850 border border-emerald-200 rounded-xl p-4 flex items-center gap-3">
+                mainBadge = `<div class="bg-emerald-50 text-emerald-855 border border-emerald-200 rounded-xl p-4 flex items-center gap-3">
                                 <span class="bg-emerald-500 text-white p-1 rounded-full"><i data-lucide="check" class="w-5 h-5"></i></span>
                                 <div>
                                     <h4 class="font-extrabold text-sm text-emerald-950">Direct Application Eligible</h4>
@@ -1073,7 +1053,14 @@
                 throw new Error("No Gemini API key found. If you have exported this HTML file, click and expand the 'Local API Configuration' section to insert your key.");
             }
             
-            const url = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-09-2025:generateContent?key=${activeKey}`;
+            // Check if we are running in the workspace (and we got a replaced key) vs a local custom key
+            // The platform replaces 'const apiKey = "...";' with the active key.
+            // If the key is the replaced platform key, we use the preview model. 
+            // If it is a user's own Google AI Studio key, we MUST use the standard stable model name 'gemini-2.5-flash'.
+            const isPlatformKey = (apiKey !== "");
+            const modelName = isPlatformKey ? "gemini-2.5-flash-preview-09-2025" : "gemini-2.5-flash";
+            
+            const url = `https://generativelanguage.googleapis.com/v1beta/models/${modelName}:generateContent?key=${activeKey}`;
             
             const payload = {
                 contents: [
@@ -1143,7 +1130,7 @@
                 .replace(/## (.*?)(?:\n|$)/g, "<h3 class='text-md font-extrabold text-vibrant-blue mt-5 mb-2 border-b border-slate-100 pb-1'>$1</h3>")
                 .replace(/# (.*?)(?:\n|$)/g, "<h2 class='text-lg font-black text-slate-900 mt-6 mb-3'>$1</h2>")
                 .replace(/^\s*-\s+(.*?)(?:\n|$)/gm, "<li class='list-disc ml-5 text-slate-650 my-1 font-medium'>$1</li>")
-                .replace(/^\s*•\s+(.*?)(?:\n|$)/gm, "<li class='list-disc ml-5 text-slate-650 my-1 font-medium'>$1</li>")
+                .replace(/^\s*•\s+(.*?)(?:\n|$)/gm, "<li class='list-disc ml-5 text-slate-655 my-1 font-medium'>$1</li>")
                 .replace(/\n/g, "<br>");
         }
 
@@ -1425,6 +1412,11 @@
                 }
             }
         });
+
+        function saveLocalApiKey() {
+            const key = document.getElementById('local-api-key').value.trim();
+            localStorage.setItem('accessspain_gemini_api_key', key);
+        }
     </script>
 </body>
 </html>
